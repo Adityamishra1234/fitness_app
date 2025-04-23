@@ -1,100 +1,15 @@
-// import 'package:flutter/material.dart';
-//
-// import 'package:get/get.dart';
-//
-// import '../controllers/splash_controller.dart';
-//
-//
-//
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'dart:async';
-//
-// class SplashView extends StatefulWidget {
-//   const SplashView({super.key});
-//
-//   @override
-//   SplashViewState createState() => SplashViewState();
-// }
-//
-// class SplashViewState extends State<SplashView> with TickerProviderStateMixin {
-//   late AnimationController _iconController;
-//   late AnimationController _textController;
-//   late Animation<double> _iconAnimation;
-//   late Animation<double> _textAnimation;
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//
-//     _iconController = AnimationController(
-//       vsync: this,
-//       duration: Duration(milliseconds: 1000),
-//     );
-//
-//     _textController = AnimationController(
-//       vsync: this,
-//       duration: Duration(milliseconds: 800),
-//     );
-//
-//     _iconAnimation = Tween<double>(begin: 0, end: 1).animate(
-//       CurvedAnimation(parent: _iconController, curve: Curves.easeIn),
-//     );
-//
-//     _textAnimation = Tween<double>(begin: 0, end: 1).animate(
-//       CurvedAnimation(parent: _textController, curve: Curves.easeIn),
-//     );
-//
-//     _iconController.forward().then((_) => _textController.forward());
-//
-//     // Go to HomeView after delay
-//     Timer(Duration(seconds: 3), () {
-//       Get.offAllNamed('/home'); // Replace with your HomeView route
-//     });
-//   }
-//
-//   @override
-//   void dispose() {
-//     _iconController.dispose();
-//     _textController.dispose();
-//     super.dispose();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Get.isDarkMode ? Colors.black : Colors.white,
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             FadeTransition(
-//               opacity: _iconAnimation,
-//               child: Image.asset('assets/images/icon.png', height: 100),
-//             ),
-//             SizedBox(height: 20),
-//             FadeTransition(
-//               opacity: _textAnimation,
-//               child: Image.asset('assets/images/logo.png', height: 40),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 
 class SplashView extends StatefulWidget {
+  const SplashView({super.key});
+
   @override
-  _SplashViewState createState() => _SplashViewState();
+  SplashViewState createState() => SplashViewState();
 }
 
-class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
+class SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   bool _showFullText = false;
   bool  _showAnotherText = false;
   bool _moveIcon = false;
@@ -103,15 +18,13 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    // Phase 1: show icon (default)
-    // Phase 2: show text
     Future.delayed(Duration(milliseconds: 1400), () {
       setState(() {
         _showFullText = true;
       });
     });
 
-    // Phase 3: move icon right and align to form logo
+
     Future.delayed(Duration(seconds: 1), () {
       setState(() {
         _moveIcon = true;
@@ -120,7 +33,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
       });
     });
 
-    // After animation, navigate
+
     Future.delayed(Duration(seconds: 4), () {
       Get.offAllNamed('/home');
     });

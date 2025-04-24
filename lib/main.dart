@@ -9,6 +9,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // final ThemeController _themeController = Get.put(ThemeController());
 
   @override

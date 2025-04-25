@@ -28,11 +28,10 @@ class HomeView extends GetView<HomeController> {
                 children: [
                   Row(
                     children: [
-                      Text("Steps: 13112", style: TextStyle(
-                        fontWeight: FontWeight.w500,
+                      Obx(() => Text('Steps: ${controller.steps}',style:TextStyle(
                         fontSize: 15,
-                      ),),
-
+                        fontWeight: w500,
+                      ))),
                     ],
                   ),
                   Row(
@@ -42,13 +41,13 @@ class HomeView extends GetView<HomeController> {
                         child: Column(
                           spacing:10,
                           children: [
-                            LinearProgressIndicator(
-                              value: 10112 / 15000,
+                            Obx(() =>LinearProgressIndicator(
+                              value: controller.steps / 15000,
                               color: context.isDarkMode ? progressBarColorDarkMode : progressBarColorLightMode,
                               minHeight: 18,
                               backgroundColor: Color(0xc0c4c4c4),
                               borderRadius: BorderRadius.circular(10),
-                            ),
+                            )),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Row(
@@ -80,10 +79,10 @@ class HomeView extends GetView<HomeController> {
                 children: [
                   Row(
                     children: [
-                      Text("Calories Burned: 500", style: TextStyle(
-                        fontWeight: FontWeight.w500,
+                      Obx(() => Text('Calories: ${controller.calories.toStringAsFixed(1)} kcal',style: TextStyle(
                         fontSize: 15,
-                      ),),
+                        fontWeight: w500,
+                      ),)),
 
                     ],
                   ),
@@ -94,13 +93,13 @@ class HomeView extends GetView<HomeController> {
                         child: Column(
                           spacing: 10,
                           children: [
-                            LinearProgressIndicator(
-                              value: 500 / 1000,
+                            Obx(() => LinearProgressIndicator(
+                              value: controller.calories / 1000,
                               color: context.isDarkMode ? progressBarColorDarkMode : progressBarColorLightMode,
                               minHeight: 18,
                               backgroundColor: Color(0xc0c4c4c4),
                               borderRadius: BorderRadius.circular(10),
-                            ),
+                            )),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 5.0),
                               child: Row(
